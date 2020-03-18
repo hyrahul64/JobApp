@@ -1,0 +1,331 @@
+-- MySQL dump 10.13  Distrib 5.7.18, for Win64 (x86_64)
+--
+-- Host: localhost    Database: jobs
+-- ------------------------------------------------------
+-- Server version	5.7.18-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `job_listing`
+--
+
+DROP TABLE IF EXISTS `job_listing`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_listing` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `company` varchar(255) NOT NULL,
+  `title` varchar(63) NOT NULL,
+  `posted_on` date DEFAULT NULL,
+  `experience_min` int(11) DEFAULT NULL,
+  `experience_max` int(11) DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT NULL,
+  `skills` varchar(2047) DEFAULT NULL,
+  `roles` varchar(2047) DEFAULT NULL,
+  `reference_id` varchar(31) DEFAULT NULL,
+  `location` varchar(15) NOT NULL,
+  `qualifications` varchar(2047) DEFAULT NULL,
+  `technologies` varchar(127) DEFAULT NULL,
+  `contact` varchar(31) DEFAULT NULL,
+  `mobile` varchar(15) DEFAULT NULL,
+  `email` varchar(31) DEFAULT NULL,
+  `apply` varchar(127) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `company_2` (`company`,`posted_on`,`title`,`location`),
+  UNIQUE KEY `company` (`company`,`reference_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_listing`
+--
+
+LOCK TABLES `job_listing` WRITE;
+/*!40000 ALTER TABLE `job_listing` DISABLE KEYS */;
+INSERT INTO `job_listing` VALUES (52,'Sophos','Senior Software Engineer','2020-02-14',5,8,1,'Python.\r\nC++.\r\nWhat eles.','nam.\r\ncreate.\r\ntest.','1234532','AHEMEDABAD','BE.MTech.','C/C++.PYTHON.',NULL,NULL,NULL,NULL),(53,'Chase','Software Engineer2','2020-03-02',8,15,0,'','','1234532','NAVI MUMBAI','','JAVA.MFC/VC++.JAVASCRIPT.',NULL,NULL,NULL,NULL),(54,'abcd','def','2020-03-09',1,3,0,'123.\r\n234.','qwe.\r\n123.','da','AHEMEDABAD','MTech.','C/C++.',NULL,NULL,NULL,NULL),(55,'my company','my title','2020-03-11',7,12,0,'123.\r\n234.','wer.\r\nqasw.','1234','AHEMEDABAD','MTech.','JAVA.C/C++.MFC/VC++.CSS/HTML.C#/WPF.','HR','902745453','hyrahul64@gmail.com','will be published soon please wait');
+/*!40000 ALTER TABLE `job_listing` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger CityUppeCase
+before insert on job_listing for each row set new.location = upper(new.location) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger TR_InsertSkill
+	after insert on job_listing
+    for each row call InsertItems(New.skills, New.id, 1) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger TR_InsertQualification
+	after insert on job_listing
+    for each row call InsertItems(New.qualifications, New.id, 2) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger TR_InsertRoles
+	after insert on job_listing
+    for each row call InsertItems(New.roles, New.id, 3) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger TR_InsertTechnologies
+	after insert on job_listing
+    for each row call InsertItems(New.technologies, New.id, 4) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Table structure for table `job_qualification`
+--
+
+DROP TABLE IF EXISTS `job_qualification`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_qualification` (
+  `job_id` int(11) NOT NULL,
+  `qualification` varchar(15) DEFAULT NULL,
+  KEY `job_qualification_ibfk_1` (`job_id`),
+  CONSTRAINT `job_qualification_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job_listing` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_qualification`
+--
+
+LOCK TABLES `job_qualification` WRITE;
+/*!40000 ALTER TABLE `job_qualification` DISABLE KEYS */;
+INSERT INTO `job_qualification` VALUES (52,'MTech'),(52,'BE'),(53,'PhD'),(53,'MTech'),(53,'BE'),(54,'MTech'),(55,'MTech');
+/*!40000 ALTER TABLE `job_qualification` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_role`
+--
+
+DROP TABLE IF EXISTS `job_role`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_role` (
+  `job_id` int(11) NOT NULL,
+  `role` varchar(255) DEFAULT NULL,
+  KEY `job_role_ibfk_1` (`job_id`),
+  CONSTRAINT `job_role_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job_listing` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_role`
+--
+
+LOCK TABLES `job_role` WRITE;
+/*!40000 ALTER TABLE `job_role` DISABLE KEYS */;
+INSERT INTO `job_role` VALUES (52,'\r\ntest'),(52,'\r\ncreate'),(52,'nam'),(53,'\r\ng'),(53,'\r\nf'),(53,'\r\ne'),(53,'\r\nd'),(53,'\r\nc'),(53,'\r\nb'),(53,'a'),(54,'\r\n123'),(54,'qwe'),(55,'\r\nqasw'),(55,'wer');
+/*!40000 ALTER TABLE `job_role` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_skill`
+--
+
+DROP TABLE IF EXISTS `job_skill`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_skill` (
+  `job_id` int(11) NOT NULL,
+  `skill` varchar(255) DEFAULT NULL,
+  KEY `job_skill_ibfk_1` (`job_id`),
+  CONSTRAINT `job_skill_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job_listing` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_skill`
+--
+
+LOCK TABLES `job_skill` WRITE;
+/*!40000 ALTER TABLE `job_skill` DISABLE KEYS */;
+INSERT INTO `job_skill` VALUES (52,'\r\nWhat eles'),(52,'\r\nC++'),(52,'Python'),(53,'\r\n6'),(53,'\r\n5'),(53,'\r\n4'),(53,'\r\n3'),(53,'\r\n2'),(53,'1'),(54,'\r\n234'),(54,'123'),(55,'\r\n234'),(55,'123');
+/*!40000 ALTER TABLE `job_skill` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `job_technology`
+--
+
+DROP TABLE IF EXISTS `job_technology`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `job_technology` (
+  `job_id` int(11) DEFAULT NULL,
+  `technology` varchar(15) NOT NULL,
+  KEY `job_id` (`job_id`),
+  CONSTRAINT `job_technology_ibfk_1` FOREIGN KEY (`job_id`) REFERENCES `job_listing` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `job_technology`
+--
+
+LOCK TABLES `job_technology` WRITE;
+/*!40000 ALTER TABLE `job_technology` DISABLE KEYS */;
+INSERT INTO `job_technology` VALUES (52,'PYTHON'),(52,'C/C++'),(53,'CSS/HTML'),(53,'JAVASCRIPT'),(53,'MFC/VC++'),(53,'C/C++'),(53,'JAVA'),(54,'C/C++'),(55,'C#/WPF'),(55,'CSS/HTML'),(55,'MFC/VC++'),(55,'C/C++'),(55,'JAVA');
+/*!40000 ALTER TABLE `job_technology` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `mytemp`
+--
+
+DROP TABLE IF EXISTS `mytemp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mytemp` (
+  `id` int(11) DEFAULT NULL,
+  `str` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mytemp`
+--
+
+LOCK TABLES `mytemp` WRITE;
+/*!40000 ALTER TABLE `mytemp` DISABLE KEYS */;
+INSERT INTO `mytemp` VALUES (NULL,''),(7,''),(2,'g'),(2,'  Working understanding of  front-end HTML/JS technologies such as JQuery, and AJAX  UNIX Shell Scripting  Continuous Integration      Servers (e'),(2,'  Knowledge of modern development lifecycles, such as Agile and iterative development'),(2,' Hands-on with latest development trends in      IT Industry'),(2,'  Source code control      software  Interface with      production support teams for issues if any reported  Strong track records in      Designing scalable solutions'),(2,'Experience developing      SOA services (REST & XML/RPC)  RDBMS experience      preferably Oracle 11'),(2,' Fundamentals  Multi-threaded      Programming  Java Frameworks such as      Spring, Hibernate  '),(2,'  Excellent Java Memory      Management'),(2,'  Strong in Object      Oriented Development and Java platform  Handson experience in      Core Java J2SE'),(2,'  Data management,      archival, reporting and analytical experience'),(2,' Experience with ETL and      processing real-time data on Hadoop platform'),(2,'Experience with query  processing and tuning reports from Hive, SparkSQL '),(2,' Handson experience in Core Java J2SE'),(4,'Skill 3'),(4,'Skill 1'),(12,'Any'),(12,'\r\nProblem solving skills and attitude, both are a bit of buzzwords, but are required in the long run, so we look for those specifically during interviews'),(12,'\r\nComfort in Linux environments - commands, libraries, tools'),(12,'\r\nComputer architecture knowledge - CPUs, memory, busses and interconnects'),(12,'\r\nPython and C coding skills - test scripts will be in python, but reading and debugging C programs will be needed'),(12,'Interest in validating hardware - reading specs and creating test plans to cover major aspects of the design'),(12,'Python'),(12,'C/C++');
+/*!40000 ALTER TABLE `mytemp` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'jobs'
+--
+/*!50003 DROP FUNCTION IF EXISTS `LineCount` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` FUNCTION `LineCount`(paragraph varchar(2047)) RETURNS int(11)
+begin
+	declare line int;
+    select length(paragraph) - length(replace(paragraph,'.','')) into line;
+    return line;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `InsertItems` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertItems`(paragraph varchar(2047), job_id int, tablenumber int)
+begin
+	declare line_count int;
+    declare line varchar(255);
+    select LineCount(paragraph) into line_count;
+    while line_count > 0 do
+		select substring_index(substring_index(paragraph,'.',line_count),'.',-1) into line;
+        case tablenumber
+			when 1 then insert into job_skill values(job_id,line);
+            when 2 then insert into job_qualification values(job_id,line);
+            when 3 then insert into job_role values(job_id,line);
+            when 4 then insert into job_technology values(job_id,line);
+        end case;
+        set line_count = line_count -1;
+    end while;
+end ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-03-11 21:50:12
